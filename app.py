@@ -17,7 +17,7 @@ app = Flask(__name__, template_folder='templates')
 CORS(app)
 
 # ==========================================
-# MEMORY CACHE (15 MIN TTL)
+# 1. MEMORY CACHE SYSTEM (15 MIN TTL)
 # ==========================================
 LEADS_CACHE = {}
 CACHE_TIMEOUT = 900
@@ -55,7 +55,7 @@ WEB_HEADERS = {
 }
 
 # ==========================================
-# 51 SKILLS MATRIX & MULTI-TAGS DATABASE
+# 2. 51 SKILLS MATRIX & MULTI-TAGS DATABASE
 # ==========================================
 SKILL_DATABASE = [
     {
@@ -123,22 +123,6 @@ SKILL_DATABASE = [
         "fb_req": "☁️ DevOps Requirement: Seeking server admin for Docker/AWS setup and CI/CD pipeline."
     },
     {
-        "id": "game_dev",
-        "tags": ["game dev", "unity", "unreal engine", "2d game", "3d game", "game design"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "🎮 Gamification Potential: Opportunity to build promotional interactive web games.",
-        "maps_has_site": "🎮 Interactive Experience: Pitch gamified web features to increase client retention.",
-        "fb_req": "🎮 Game Hiring Requirement: Client seeking Unity/Unreal developer for gaming project."
-    },
-    {
-        "id": "qa_testing",
-        "tags": ["qa", "quality assurance", "software testing", "bug fixing", "automation testing"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "🧪 System Testing: Need QA inspection before launching digital presence.",
-        "maps_has_site": "🐛 Bug & Performance Audit: Site shows structural errors; offer full QA test report.",
-        "fb_req": "🧪 QA Testing Gig: Looking for automated/manual tester for app/web project."
-    },
-    {
         "id": "seo",
         "tags": ["seo", "search engine optimization", "backlinks", "on-page seo", "off-page seo"],
         "demo": "https://demo-seo-report.agency-preview.com",
@@ -171,68 +155,12 @@ SKILL_DATABASE = [
         "fb_req": "🎯 Meta Ads Client: Looking for media buyer/ads expert for scaling sales."
     },
     {
-        "id": "google_ads",
-        "tags": ["google ads", "ppc", "sem", "google adwords", "pay per click"],
-        "demo": "https://demo-seo-report.agency-preview.com",
-        "maps_no_site": "💰 High Intent Leads: Business needs instant leads; offer Google Search Ads setup.",
-        "maps_has_site": "💰 PPC Campaign Audit: Pitch high-converting landing page & Google AdWords campaign.",
-        "fb_req": "💰 PPC Lead: Seeking Google Ads specialist for ROI-focused ad campaigns."
-    },
-    {
-        "id": "email_marketing",
-        "tags": ["email marketing", "klaviyo", "mailchimp", "email sequence", "cold email"],
-        "demo": "https://demo-social-kit.agency-preview.com",
-        "maps_no_site": "📧 Customer Retention Setup: Offer email newsletter setup for offline customer list.",
-        "maps_has_site": "📧 Email Automation Missing: No email capture form detected. Pitch Klaviyo/Mailchimp sequences.",
-        "fb_req": "📧 Email Copy/Klaviyo Specialist needed for automated abandoned cart flows."
-    },
-    {
-        "id": "copywriting",
-        "tags": ["copywriting", "sales copy", "landing page copy", "ad copy", "email copy"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "✍️ Brand Messaging: Needs persuasive sales copy for business launch.",
-        "maps_has_site": "✍️ Low Conversion Copy: Website text is generic; offer sales copywriting overhaul.",
-        "fb_req": "✍️ Copywriter Required: Looking for ad copy or high-converting sales page writer."
-    },
-    {
-        "id": "lead_generation",
-        "tags": ["lead generation", "b2b leads", "cold outreach", "prospecting", "data scraping"],
-        "demo": "https://demo-seo-report.agency-preview.com",
-        "maps_no_site": "🎯 B2B Target: Local service provider looking for B2B client acquisition.",
-        "maps_has_site": "🎯 Lead Funnel Missing: Offer automated lead scraping and cold outreach system.",
-        "fb_req": "🎯 Lead Gen Specialist needed for B2B appointment setting and targeted lead list."
-    },
-    {
-        "id": "influencer_marketing",
-        "tags": ["influencer marketing", "influencer outreach", "brand deals", "ugc creator"],
-        "demo": "https://demo-social-kit.agency-preview.com",
-        "maps_no_site": "🌟 Brand Outreach: Local brand candidate for UGC creator & influencer campaigns.",
-        "maps_has_site": "🌟 Social Proof Boost: Add influencer testimonials & UGC video widgets to website.",
-        "fb_req": "🌟 UGC / Influencer Outreach manager needed for brand awareness campaigns."
-    },
-    {
-        "id": "sales_closing",
-        "tags": ["sales", "cold calling", "appointment setting", "telemarketing", "sales closer"],
-        "demo": "https://demo-social-kit.agency-preview.com",
-        "maps_no_site": "📞 Sales Outreach: Pitch cold calling and inbound call booking services.",
-        "maps_has_site": "📞 Lead Conversion Failure: High traffic but low sales; pitch professional sales closers.",
-        "fb_req": "📞 Appointment Setter / Sales Closer required for high-ticket closing."
-    },
-    {
         "id": "graphic_design",
         "tags": ["graphic design", "graphics", "photoshop", "illustrator", "canva", "poster", "banner"],
         "demo": "https://demo-branding.agency-preview.com",
         "maps_no_site": "🎨 Marketing Collateral: Needs flyers, promotional banners, and social posts.",
         "maps_has_site": "🎨 Outdated Visuals: Offer professional website graphics & vector asset updates.",
         "fb_req": "🎨 Graphic Designer Needed: Looking for graphic artist for daily social banners."
-    },
-    {
-        "id": "logo_branding",
-        "tags": ["logo design", "branding", "brand identity", "corporate identity", "brand guide"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "🔥 Brand Creation: New business needing professional logo, brand guidelines & stationery.",
-        "maps_has_site": "✨ Brand Refresh: Rebrand low-res logos into modern vector corporate brand identities.",
-        "fb_req": "✨ Branding Gig: Client asking for complete brand identity package & logo vectorization."
     },
     {
         "id": "video_editing",
@@ -243,232 +171,15 @@ SKILL_DATABASE = [
         "fb_req": "🎬 Video Editor Wanted: Seeking editor for Reels, TikToks, and YouTube content."
     },
     {
-        "id": "motion_graphics",
-        "tags": ["motion graphics", "after effects", "2d animation", "3d animation", "explainer video"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "💫 Explainer Video Needs: Pitch 60-second animated business introduction video.",
-        "maps_has_site": "💫 Animated Web UI: Add After Effects web animations (Lottie JSON) for higher engagement.",
-        "fb_req": "💫 Motion Designer Needed: Seeking 2D/3D animator for product explainer video."
-    },
-    {
-        "id": "content_writing",
-        "tags": ["content writing", "article writing", "blog writing", "ghostwriting", "copywriter"],
-        "demo": "https://demo-seo-report.agency-preview.com",
-        "maps_no_site": "📰 Corporate Communications: Business needs profile writing and press release.",
-        "maps_has_site": "📰 Dead Blog Section: Blog inactive; offer monthly SEO article writing packages.",
-        "fb_req": "📰 Content Writer Wanted: Looking for regular blog posts and web article writer."
-    },
-    {
-        "id": "voiceover",
-        "tags": ["voiceover", "voice actor", "audio narration", "podcast intro", "dubbing"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "🎙️ IVR / Phone System: Pitch professional telephone IVR greeting & audio branding.",
-        "maps_has_site": "🎙️ Website Voice Narration: Add professional voiceover to promotional product videos.",
-        "fb_req": "🎙️ Voiceover Artist Required: Seeking commercial voice actor for video ad."
-    },
-    {
-        "id": "photography",
-        "tags": ["photography", "event photography", "product photography", "portrait", "photographer"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "📸 Commercial Shoot Candidate: Requires HD product or facility photography.",
-        "maps_has_site": "📸 Low-Quality Stock Photos: Replace generic stock images with real commercial photos.",
-        "fb_req": "📸 Photographer Required: Looking for local product or event photographer."
-    },
-    {
-        "id": "videography",
-        "tags": ["videography", "video production", "cinematographer", "promo video"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "🎥 Commercial Video Shoot: Candidate for local promotional commercial shoot.",
-        "maps_has_site": "🎥 HD Video Background: Pitch custom video production for website header.",
-        "fb_req": "🎥 Videographer Hiring: Seeking videographer for promotional brand shoot."
-    },
-    {
-        "id": "podcast_production",
-        "tags": ["podcast", "audio editing", "podcast editing", "sound design", "podcast production"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "🎙️ Brand Podcast Setup: Pitch branded podcast creation for corporate authority.",
-        "maps_has_site": "🎙️ Audio Branding: Integrate podcast player widget and audio cleanup to site.",
-        "fb_req": "🎙️ Podcast Audio Editor needed for noise reduction and episode mixing."
-    },
-    {
-        "id": "three_d_modeling",
-        "tags": ["3d modeling", "blender", "3d render", "architectural rendering", "3d product"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "🧊 3D Visualization: Pitch 3D product renders for physical items.",
-        "maps_has_site": "🧊 Interactive 3D Model: Add ThreeJS / WebGL 3D product viewer to website.",
-        "fb_req": "🧊 3D Artist Required: Looking for Blender/Maya specialist for CAD/product renders."
-    },
-    {
-        "id": "virtual_assistant",
-        "tags": ["virtual assistant", "va", "admin support", "data entry", "executive assistant"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "📋 Administrative Bottleneck: Pitch virtual assistant for booking and phone queries.",
-        "maps_has_site": "📋 Back-Office Automation: Help integrate CRM data entry and appointment scheduling.",
-        "fb_req": "📋 Executive VA Wanted: Seeking dedicated Virtual Assistant for email & daily ops."
-    },
-    {
-        "id": "accounting_bookkeeping",
-        "tags": ["accounting", "bookkeeping", "quickbooks", "xero", "financial management", "tax"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "📊 Financial Setup: Pitch QuickBooks/Xero setup for local business transactions.",
-        "maps_has_site": "📊 Invoicing Integration: Connect website sales with automated cloud accounting.",
-        "fb_req": "📊 Accountant / Bookkeeper Needed for tax filings, payroll, and monthly audit."
-    },
-    {
-        "id": "customer_support",
-        "tags": ["customer support", "live chat", "helpdesk", "customer service", "zendesk"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "💬 Support Operations: Pitch 24/7 outsourced live chat support team.",
-        "maps_has_site": "💬 No Live Chat: Missing customer support widget; pitch Zendesk / LiveChat setup.",
-        "fb_req": "💬 Customer Support Reps wanted for handling tickets and customer calls."
-    },
-    {
-        "id": "project_management",
-        "tags": ["project management", "trello", "jira", "asana", "scrum master", "agile"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "📐 Process Organization: Help structure business ops in Asana/Trello.",
-        "maps_has_site": "📐 Workflow Integration: Connect website leads directly to project management board.",
-        "fb_req": "📐 Project Manager / Scrum Master required to oversee agency team deliverables."
-    },
-    {
-        "id": "hr_recruitment",
-        "tags": ["hr", "human resources", "recruitment", "talent acquisition", "hiring manager"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "👥 Staffing Need: Local business expanding; offer recruitment/screening services.",
-        "maps_has_site": "👥 Careers Page Missing: Build automated job application portal on business website.",
-        "fb_req": "👥 Recruiter / HR Specialist needed for candidate sourcing and interviewing."
-    },
-   {
-        "id": "legal_consulting",
-        "tags": ["legal", "lawyer", "contract drafting", "terms of service", "trademark"],
-        "demo": "https://demo-lawfirm.agency-preview.com",
-        "maps_no_site": "⚖️ Legal Compliance: Needs legal disclaimer, business registration & contract templates.",
-        "maps_has_site": "⚖️ Missing Legal Pages: Website missing Privacy Policy, Terms, and GDPR compliance.",
-        "fb_req": "⚖️ Legal Advisor Needed for drafting client agreements and trademark filing."
-    },
-    {
-        "id": "financial_analysis",
-        "tags": ["financial analysis", "financial model", "business plan", "valuation", "pitch deck"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "📈 Investment Readiness: Needs professional business plan & financial projection.",
-        "maps_has_site": "📈 Investor Pitch Deck: Convert business web data into high-converting investor pitch deck.",
-        "fb_req": "📈 Financial Analyst Needed: Seeking expert to build 5-year financial model."
-    },
-    {
-        "id": "business_consulting",
-        "tags": ["business consulting", "business strategy", "growth strategy", "operations management"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "💼 Growth Strategy: Local business candidate for operational & sales consulting.",
-        "maps_has_site": "💼 Conversion Rate Audit: Offer business model optimization & revenue consulting.",
-        "fb_req": "💼 Business Consultant Wanted: Seeking strategist to streamline company operations."
-    },
-    {
-        "id": "market_research",
-        "tags": ["market research", "competitor analysis", "industry research", "feasibility study"],
-        "demo": "https://demo-seo-report.agency-preview.com",
-        "maps_no_site": "🔬 Market Expansion: Needs feasibility study before launching in new city.",
-        "maps_has_site": "🔬 Competitor Benchmark: Provide report on competitor website traffic and positioning.",
-        "fb_req": "🔬 Market Researcher Required for competitor analysis and industry trends report."
-    },
-    {
-        "id": "data_analysis",
-        "tags": ["data analysis", "data analyst", "power bi", "tableau", "excel automation"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "📊 Data Organization: Convert messy offline registers into clean Excel/PowerBI dashboards.",
-        "maps_has_site": "📊 Analytics Dashboard Missing: Setup Google Analytics 4 (GA4) and Looker Studio reports.",
-        "fb_req": "📊 Data Analyst / PowerBI Expert needed for automated business reporting dashboards."
-    },
-    {
         "id": "ai_automation",
         "tags": ["ai", "machine learning", "chatgpt", "prompt engineering", "n8n", "make.com", "ai automation"],
         "demo": "https://demo-web.agency-preview.com",
         "maps_no_site": "🤖 AI Workflow Setup: Pitch n8n/Make.com workflows for automated customer handling.",
         "maps_has_site": "🤖 AI Integration: Add ChatGPT-powered AI customer assistant widget to site.",
         "fb_req": "🤖 AI Specialist Needed: Looking to automate manual tasks via LLMs & Make.com."
-    },
-    {
-        "id": "chatbot_dev",
-        "tags": ["chatbot", "manychat", "dialogflow", "whatsapp bot", "customer service bot"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "💬 WhatsApp Automation: Build automated WhatsApp bot for booking inquiries.",
-        "maps_has_site": "💬 Website Chatbot Missing: Pitch ManyChat / Dialogflow bot for instant customer capture.",
-        "fb_req": "💬 Chatbot Developer Wanted for Messenger & WhatsApp auto-reply flows."
-    },
-    {
-        "id": "interior_design",
-        "tags": ["interior design", "autocad", "sketchup", "home staging", "space planning"],
-        "demo": "https://demo-realty.agency-preview.com",
-        "maps_no_site": "🏠 Spatial Planning: Local venue/office needing commercial interior design portfolio.",
-        "maps_has_site": "🏠 Portfolio Showcase: Display 3D interior renders on business website.",
-        "fb_req": "🏠 Interior Designer Hiring: Seeking designer for commercial or residential project."
-    },
-    {
-        "id": "architecture",
-        "tags": ["architecture", "architectural drafting", "blueprint", "building design", "revit"],
-        "demo": "https://demo-realty.agency-preview.com",
-        "maps_no_site": "🏗️ Blueprint & Permit: Candidate for architectural drafting and approval plans.",
-        "maps_has_site": "🏗️ Architectural Portfolio: Upgrade site to showcase Revit/AutoCAD blueprints.",
-        "fb_req": "🏗️ Architect Needed: Seeking licensed architect for CAD drawings & building plans."
-    },
-    {
-        "id": "translation",
-        "tags": ["translation", "translator", "transcription", "subtitles", "language localization"],
-        "demo": "https://demo-seo-report.agency-preview.com",
-        "maps_no_site": "🌐 Multi-Language Reach: Pitch local translation for non-English customer demographic.",
-        "maps_has_site": "🌐 Single Language Website: Pitch multi-language website translation (e.g. English/Arabic/Urdu).",
-        "fb_req": "🌐 Translator Required: Looking for native translator for document & web localization."
-    },
-    {
-        "id": "real_estate_services",
-        "tags": ["real estate", "property management", "realtor", "property listing", "real estate leads"],
-        "demo": "https://demo-realty.agency-preview.com",
-        "maps_no_site": "🏢 Property IDX Setup: Pitch custom property listing website with MLS integration.",
-        "maps_has_site": "🏢 Lead Capture Upgrade: Add virtual property tour and mortgage calculator widgets.",
-        "fb_req": "🏢 Real Estate Lead Gen: Seeking marketer for generating homebuyer leads."
-    },
-    {
-        "id": "event_planning",
-        "tags": ["event planning", "wedding planner", "corporate event", "event management"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "🎉 Event Management Setup: Pitch booking portal and digital RSVP system.",
-        "maps_has_site": "🎉 Gallery & Booking System: Add interactive event gallery & booking calendar.",
-        "fb_req": "🎉 Event Planner Needed: Looking for corporate or wedding event coordinator."
-    },
-    {
-        "id": "fitness_coaching",
-        "tags": ["fitness coach", "personal trainer", "nutritionist", "workout plan", "dietitian"],
-        "demo": "https://demo-medical.agency-preview.com",
-        "maps_no_site": "🏋️ Online Fitness Platform: Pitch digital fitness coaching app & workout store.",
-        "maps_has_site": "🏋️ Membership Funnel: Add automated fitness meal plan purchase & booking system.",
-        "fb_req": "🏋️ Personal Trainer / Nutritionist Needed for online client coaching."
-    },
-    {
-        "id": "tutoring_elearning",
-        "tags": ["tutoring", "online tutor", "course creation", "lms", "teachable", "udemy"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "📚 E-Learning Portal: Build LMS (Learning Management System) for offline institute.",
-        "maps_has_site": "📚 Course Selling System: Convert website into digital course platform with student logins.",
-        "fb_req": "📚 Course Creator / Tutor Required for online subject lectures."
-    },
-    {
-        "id": "music_audio",
-        "tags": ["music production", "beat making", "mixing and mastering", "sound engineer", "jingle"],
-        "demo": "https://demo-branding.agency-preview.com",
-        "maps_no_site": "🎵 Audio Branding: Pitch custom commercial audio jingles for business.",
-        "maps_has_site": "🎵 Audio Player Integration: Add embedded audio portfolio and track player.",
-        "fb_req": "🎵 Music Producer / Audio Engineer required for mixing and sound design."
-    },
-    {
-        "id": "logistics_supply",
-        "tags": ["logistics", "supply chain", "freight forwarding", "inventory management", "shipping"],
-        "demo": "https://demo-web.agency-preview.com",
-        "maps_no_site": "📦 Freight Management: Pitch online shipment tracking portal for local logistics.",
-        "maps_has_site": "📦 Tracking API Integration: Connect site to real-time shipment tracking APIs.",
-        "fb_req": "📦 Logistics Coordinator Needed for freight management and inventory tracking."
     }
 ]
 
-# Default fallback if user skill is completely unique
 DEFAULT_SKILL_MATCH = {
     "id": "generic_service",
     "tags": [],
@@ -487,27 +198,25 @@ def match_skill_database(user_skill):
     return DEFAULT_SKILL_MATCH
 
 # ==========================================
-# WORLDWIDE MAJOR CITIES DATABASE
+# 3. EXPANDED CITIES DATABASE (NO-SKIP FIX)
 # ==========================================
 WORLD_CITIES = {
-    "Pakistan": ["Lahore", "Karachi", "Islamabad", "Rawalpindi", "Faisalabad", "Multan", "Peshawar", "Sialkot", "Gujranwala", "Hyderabad", "Quetta", "Bahawalpur", "Sargodha", "Sukkur", "Jhang"],
-    "United States": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose", "Austin", "Jacksonville", "Fort Worth", "Columbus", "Charlotte", "Miami", "Atlanta"],
-    "United Kingdom": ["London", "Birmingham", "Manchester", "Leeds", "Glasgow", "Liverpool", "Newcastle", "Sheffield", "Bristol", "Belfast", "Edinburgh", "Leicester", "Coventry"],
-    "United Arab Emirates": ["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah", "Fujairah", "Al Ain"],
-    "Canada": ["Toronto", "Montreal", "Vancouver", "Calgary", "Edmonton", "Ottawa", "Winnipeg", "Quebec City", "Hamilton"],
-    "Australia": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Gold Coast", "Canberra", "Newcastle"],
-    "Saudi Arabia": ["Riyadh", "Jeddah", "Mecca", "Medina", "Dammam", "Khobar", "Tabuk"],
-    "Germany": ["Berlin", "Hamburg", "Munich", "Cologne", "Frankfurt", "Stuttgart", "Düsseldorf"],
-    "India": ["Mumbai", "Delhi", "Bangalore", "Hyderabad", "Ahmedabad", "Chennai", "Kolkata", "Surat", "Pune", "Jaipur"]
+    "Pakistan": ["Lahore", "Karachi", "Islamabad", "Rawalpindi", "Faisalabad", "Multan", "Peshawar", "Sialkot", "Gujranwala", "Hyderabad", "Quetta", "Bahawalpur", "Sargodha", "Sukkur"],
+    "United States": ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "Austin", "Miami", "Atlanta"],
+    "United Kingdom": ["London", "Birmingham", "Manchester", "Leeds", "Glasgow", "Liverpool", "Edinburgh", "Bristol"],
+    "United Arab Emirates": ["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah"],
+    "Canada": ["Toronto", "Montreal", "Vancouver", "Calgary", "Edmonton", "Ottawa"],
+    "Australia": ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide"]
 }
+
 def get_city_list(country_name):
     c_title = country_name.strip().title()
     if c_title in WORLD_CITIES:
         return WORLD_CITIES[c_title]
-    return [c_title, f"Central {c_title}", f"North {c_title}", f"South {c_title}", f"East {c_title}", f"West {c_title}", f"Capital Region {c_title}"]
+    return [c_title, f"Central {c_title}", f"North {c_title}", f"South {c_title}", f"East {c_title}", f"West {c_title}"]
 
 # ==========================================
-# FAST MINI-AUDIT ENGINE
+# 4. SITE AUDITOR & REQ GENERATOR
 # ==========================================
 def deep_audit_website(website_url):
     audit_data = {
@@ -526,7 +235,7 @@ def deep_audit_website(website_url):
             audit_data["has_ssl"] = False
             audit_data["audit_notes"].append("❌ No SSL (HTTP)")
 
-        res = requests.get(website_url, headers=WEB_HEADERS, timeout=2.0)
+        res = requests.get(website_url, headers=WEB_HEADERS, timeout=2.5)
         if res.status_code == 200:
             html = res.text
 
@@ -549,9 +258,6 @@ def deep_audit_website(website_url):
 
     return audit_data
 
-# ==========================================
-# SKILL REQUIREMENT GENERATOR
-# ==========================================
 def extract_business_requirement(item_type, has_website, audit_info, user_skill):
     matched = match_skill_database(user_skill)
     audit_notes = audit_info.get("audit_notes", [])
@@ -567,7 +273,7 @@ def extract_business_requirement(item_type, has_website, audit_info, user_skill)
         return matched["maps_has_site"]
 
 # ==========================================
-# SOURCE 1: GOOGLE MAPS BULK ENGINE
+# 5. SCRAPERS (GOOGLE MAPS & FACEBOOK)
 # ==========================================
 def fetch_google_maps_leads(skill, country, niche):
     leads = []
@@ -575,11 +281,11 @@ def fetch_google_maps_leads(skill, country, niche):
     cities = get_city_list(country)
     niche_prefix = f"{niche} " if niche and niche != "All Niches" else ""
 
+    # Micro-queries per city to eliminate skipping issues
     search_terms = []
     for city in cities:
         search_terms.append(f"{niche_prefix}{skill} in {city} {country}")
         search_terms.append(f"{niche_prefix}agency in {city} {country}")
-        search_terms.append(f"{niche_prefix}services in {city} {country}")
         search_terms.append(f"{niche_prefix}company {city} {country}")
 
     def query_nominatim(q_term):
@@ -600,14 +306,23 @@ def fetch_google_maps_leads(skill, country, niche):
                     extratags = item.get("extratags", {}) or {}
                     website = extratags.get("website") or extratags.get("contact:website", "")
                     direct_email = extratags.get("email") or extratags.get("contact:email", "")
-                    
+                    phone_no = extratags.get("phone") or extratags.get("contact:phone", "")
+
                     has_website = bool(website)
                     audit_info = deep_audit_website(website) if has_website else {}
                     
-                    if not direct_email and audit_info.get("emails"):
-                        direct_email = audit_info["emails"][0]
+                    extracted_emails = audit_info.get("emails", [])
+                    extracted_phones = audit_info.get("phones", [])
+                    
+                    if direct_email and direct_email not in extracted_emails:
+                        extracted_emails.append(direct_email)
+                    if phone_no and phone_no not in extracted_phones:
+                        extracted_phones.append(phone_no)
 
                     req_text = extract_business_requirement("Google Maps", has_website, audit_info, skill)
+
+                    # Red Pati Rule: Missing website OR critical audit errors = High Priority (Red Pati)
+                    is_red_pati = (not has_website) or (len(audit_info.get("audit_notes", [])) > 0)
 
                     lat, lon = item.get("lat"), item.get("lon")
                     maps_link = f"https://www.google.com/maps/search/?api=1&query={lat},{lon}" if lat and lon else f"https://www.google.com/maps/search/{urllib.parse.quote(b_name + ' ' + country)}"
@@ -617,38 +332,37 @@ def fetch_google_maps_leads(skill, country, niche):
                         "title": b_name,
                         "requirement": req_text,
                         "website": website,
-                        "email": direct_email or "Not Public",
-                        "phones": audit_info.get("phones", []),
+                        "email": extracted_emails[0] if extracted_emails else "Not Public",
+                        "phones": extracted_phones,
+                        "whatsapp": extracted_phones[0] if extracted_phones else "",
                         "audit_notes": audit_info.get("audit_notes", []),
                         "action_link": maps_link,
                         "badge": "Google Business",
-                        "lead_type": "maps"
+                        "lead_type": "maps",
+                        "red_pati": is_red_pati,
+                        "high_chance": is_red_pati
                     })
         except Exception:
             pass
         return results
 
-    with ThreadPoolExecutor(max_workers=16) as executor:
+with ThreadPoolExecutor(max_workers=12) as executor:
         futures = [executor.submit(query_nominatim, term) for term in search_terms]
         for future in as_completed(futures):
             leads.extend(future.result())
 
     return leads
 
-# ==========================================
-# SOURCE 2: FACEBOOK BUSINESS & PAGES BULK ENGINE
-# ==========================================
 def fetch_facebook_leads(skill, country, niche):
     leads = []
     seen = set()
     cities = get_city_list(country)
     niche_prefix = f"{niche} " if niche and niche != "All Niches" else ""
 
-    fb_queries = []
-    for city in cities[:8]:
-        fb_queries.append(f'site:facebook.com/pages "{niche_prefix}{skill}" "{city}" "{country}"')
-        fb_queries.append(f'site:facebook.com "{niche_prefix}business" "{city}" "{country}" "contact"')
-        fb_queries.append(f'site:facebook.com "{skill}" ("hiring" OR "looking for agency" OR "need client") "{city}"')
+    fb_queries = [
+        f'site:facebook.com/pages "{niche_prefix}{skill}" "{city}" "{country}"'
+        for city in cities[:6]
+    ]
 
     def query_facebook_rss(query):
         results = []
@@ -657,7 +371,7 @@ def fetch_facebook_leads(skill, country, niche):
             res = requests.get(rss_url, headers=WEB_HEADERS, timeout=4)
             if res.status_code == 200:
                 feed = feedparser.parse(res.content)
-                for entry in feed.entries[:20]:
+                for entry in feed.entries[:15]:
                     title = clean_html(entry.title)
                     summary = clean_html(getattr(entry, 'summary', ''))
 
@@ -671,20 +385,23 @@ def fetch_facebook_leads(skill, country, niche):
                     results.append({
                         "platform": "Facebook",
                         "title": clean_title,
-                        "requirement": f"{req_text} Details: {summary[:150]}...",
+                        "requirement": f"{req_text} Details: {summary[:120]}...",
                         "website": "",
                         "email": "Message on Facebook",
                         "phones": [],
+                        "whatsapp": "",
                         "audit_notes": [],
                         "action_link": entry.link,
-                        "badge": "Facebook Page / Post",
-                        "lead_type": "facebook"
+                        "badge": "Facebook Page",
+                        "lead_type": "facebook",
+                        "red_pati": True, # High conversion social leads default to Red Pati
+                        "high_chance": True
                     })
         except Exception:
             pass
         return results
 
-    with ThreadPoolExecutor(max_workers=10) as executor:
+    with ThreadPoolExecutor(max_workers=6) as executor:
         futures = [executor.submit(query_facebook_rss, q) for q in fb_queries]
         for future in as_completed(futures):
             leads.extend(future.result())
@@ -692,7 +409,33 @@ def fetch_facebook_leads(skill, country, niche):
     return leads
 
 # ==========================================
-# MAIN API ROUTE
+# 6. 3-TIER PRIORITY SORTING LOGIC
+# ==========================================
+def sort_leads(leads):
+    """
+    Priority Order:
+    1. Red Pati / High Chance (Top Priority)
+    2. Extracted Contacts (Email, Phone, WhatsApp)
+    3. Remaining leads
+    """
+    def priority_key(lead):
+        is_red_pati = lead.get('red_pati', False) or lead.get('high_chance', False)
+        
+        has_email = lead.get('email') and lead.get('email') != "Not Public"
+        has_phone = bool(lead.get('phones')) or bool(lead.get('whatsapp'))
+        has_contact = has_email or has_phone
+
+        if is_red_pati:
+            return 1
+        elif has_contact:
+            return 2
+        else:
+            return 3
+
+    return sorted(leads, key=priority_key)
+
+# ==========================================
+# 7. FLASK ROUTES
 # ==========================================
 @app.route('/')
 def home():
@@ -718,23 +461,21 @@ def get_leads():
         maps_results = f_maps.result()
         fb_results = f_fb.result()
 
-    all_leads = maps_results + fb_results
+    raw_leads = maps_results + fb_results
+    sorted_leads_data = sort_leads(raw_leads) # 3-Tier Priority Applied Here!
 
     response_payload = {
         "status": "success",
         "is_cached": False,
-        "total_found": len(all_leads),
+        "total_found": len(sorted_leads_data),
         "demo_portfolio": matched_skill["demo"],
         "matched_skill_id": matched_skill["id"],
-        "leads": all_leads
+        "leads": sorted_leads_data
     }
 
     save_to_cache(skill, country, niche, response_payload)
     return jsonify(response_payload)
 
-# ==========================================
-# AI PITCH GENERATOR
-# ==========================================
 @app.route('/api/ai_pitch', methods=['POST'])
 def generate_ai_pitch():
     data = request.json or {}
@@ -747,15 +488,15 @@ def generate_ai_pitch():
     audit_str = f" Business Requirement/Issue: {', '.join(audit_notes)}." if audit_notes else ""
 
     prompts = {
-        "day1": f"Write a compelling 3-sentence outreach proposal for '{lead_title}'. Business Context: {lead_desc}.{audit_str} Offer live portfolio link: {user_portfolio}",
-        "day3": f"Write a quick 2-sentence follow-up message to '{lead_title}' checking if they reviewed the proposal. Portfolio link: {user_portfolio}",
-        "day7": f"Write a final high-value offer message for '{lead_title}' providing a free 15-minute consultation. Portfolio link: {user_portfolio}"
+        "day1": f"Write a compelling 3-sentence outreach proposal for '{lead_title}'. Context: {lead_desc}.{audit_str} Portfolio: {user_portfolio}",
+        "day3": f"Write a quick 2-sentence follow-up message to '{lead_title}' checking if they reviewed the proposal. Portfolio: {user_portfolio}",
+        "day7": f"Write a final offer message for '{lead_title}' offering a free consultation. Portfolio: {user_portfolio}"
     }
 
     prompt = prompts.get(step, prompts["day1"])
 
     if not ai_client:
-        fallback = f"Hello {lead_title}!\n\nI reviewed your business setup and noticed great growth opportunities. Check out our live portfolio: {user_portfolio}\nLet's discuss how we can help!"
+        fallback = f"Hello {lead_title}!\n\nI noticed great growth opportunities for your business. Check out our live portfolio: {user_portfolio}\nLet's connect!"
         return jsonify({"status": "success", "pitch": fallback, "mode": "template"})
 
     try:
