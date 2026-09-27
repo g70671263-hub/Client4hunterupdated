@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Hunter Pro - Agency Suite</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: #0b0f19; color: #f8fafc; margin: 0; padding: 20px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h1 { text-align: center; color: #38bdf8; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #64748b; margin-bottom: 25px; font-size: 14px; }
+        
+        .search-panel { background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; margin-bottom: 20px; }
+        .search-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 15px; }
+        input, select, button { padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #fff; font-size: 14px; }
+        button { background: #0284c7; font-weight: bold; cursor: pointer; border: none; }
+        button:hover { background: #0369a1; }
+        
+        .demo-bar { background: #0369a1; padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+        .demo-bar a { color: #f0f9ff; font-weight: bold; }
+
+        .tabs-container { display: flex; gap: 8px; margin-bottom: 20px; overflow-x: auto; }
+        .tab-btn { background: #1e293b; color: #94a3b8; border: 1px solid #334155; padding: 8px 16px; border-radius: 20px; cursor: pointer; white-space: nowrap; font-size: 13px; }
+        .tab-btn.active { background: #38bdf8; color: #0f172a; font-weight: bold; border-color: #38bdf8; }
+
+        .leads-grid { display: grid; gap: 15px; }
+        .card { background: #1e293b; border-radius: 10px; padding: 18px; border: 1px solid #334155; position: relative; }
+        .card.hot-lead { border: 2px solid #ef4444; background: #181016; }
+        
+        .badge { display: inline-block; padding: 4px 8px; border-radius: 5px; font-size: 11px; font-weight: bold; margin-bottom: 8px; }
+        .badge-hot { background: #ef4444; color: white; }
+        .badge-maps { background: #0284c7; color: white; }
+        
+        .title { font-size: 18px; font-weight: bold; color: #f1f5f9; margin-bottom: 6px; }
+        .desc { font-size: 13px; color: #cbd5e1; margin-bottom: 10px; }
+        
+        .contacts-box { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; margin-bottom: 12px; font-size: 12px; }
+        .contact-item { margin-bottom: 4px; color: #38bdf8; }
+        .audit-tag { display: inline-block; background: #451a03; color: #f97316; padding: 2px 6px; border-radius: 4px; font-size: 11px; margin-right: 5px; margin-top: 4px; }
+
+        .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+        .btn-action { padding: 8px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-flex; align-items: center; }
+        .btn-maps { background: #334155; color: #fff; }
+        .btn-pitch { background: #10b981; color: #fff; cursor: pointer; border: none; }
+        
+        /* MODAL */
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); align-items: center; justify-content: center; padding: 20px; z-index: 100; }
+        .modal-content { background: #1e293b; padding: 20px; border-radius: 12px; max-width: 600px; width: 100%; border: 1px solid #475569; }
+        textarea { width: 100%; height: 140px; background: #0f172a; color: #fff; border: 1px solid #334155; border-radius: 8px; padding: 10px; font-size: 13px; margin: 10px 0; }
+        .seq-btn { background: #334155; color: #fff; padding: 6px 12px; font-size: 12px; border-radius: 6px; margin-right: 5px; border: none; cursor: pointer; }
+        .seq-btn.active { background: #0284c7; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 Client Hunter Pro</h1>
+    <div class="subtitle">Deep Audit Engine • High-Ticket Targeting • 3-Step Sequence</div>
+
+    <div class="search-panel">
+        <div class="search-grid">
+            <input type="text" id="skillInput" placeholder="Skill (e.g. Web Development)">
+            
+            <!-- UPGRADE 3: TIER-1 COUNTRIES -->
+            <select id="countryInput">
+                <option value="Pakistan">Pakistan 🇵🇰</option>
+                <option value="United States">United States 🇺🇸 (Tier-1)</option>
+                <option value="United Kingdom">United Kingdom 🇬🇧 (Tier-1)</option>
+                <option value="United Arab Emirates">UAE 🇦🇪 (High Budget)</option>
+                <option value="Canada">Canada 🇨🇦 (Tier-1)</option>
+                <option value="Australia">Australia 🇦🇺 (Tier-1)</option>
+            </select>
+
+            <!-- UPGRADE 3: HIGH-TICKET NICHES -->
+            <select id="nicheInput">
+                <option value="All Niches">All Industry Sectors</option>
+                <option value="Real Estate">Real Estate Agencies 🏢</option>
+                <option value="Dental Clinic">Medical & Clinics 🏥</option>
+                <option value="Law Firm">Law Firms ⚖️</option>
+                <option value="Solar HVAC">Solar & HVAC Contractors ⚡</option>
+                <option value="Roofing">Roofing Contractors 🏠</option>
+            </select>
+        </div>
+        <button style="width: 100%;" onclick="fetchLeads()">Run Multi-Engine Search</button>
+    </div>
+
+    <!-- UPGRADE 5: DEMO PREVIEW -->
+    <div class="demo-bar" id="demoBar" style="display: none;">
+        <span>🎯 Auto-Matched Portfolio Preview:</span>
+        <a id="demoLink" href="#" target="_blank">Open Sample Agency Demo ↗</a>
+    </div>
+
+    <div class="tabs-container" id="tabsContainer" style="display: none;">
+        <button class="tab-btn active" onclick="filterLeads('all', this)">All Leads</button>
+        <button class="tab-btn" onclick="filterLeads('hot', this)">🔥 Hot Audit Leads</button>
+        <button class="tab-btn" onclick="filterLeads('maps', this)">📍 Google Maps</button>
+    </div>
+
+    <div class="leads-grid" id="leadsGrid"></div>
+</div>
+
+<!-- MODAL FOR AI PITCH & 3-STEP SEQUENCES -->
+<div class="modal" id="pitchModal">
+    <div class="modal-content">
+        <h3 style="margin-top:0; color:#38bdf8;">🤖 Multi-Step Pitch Generator</h3>
+        <div>
+            <button class="seq-btn active" onclick="switchSequence('day1', this)">Day 1 Pitch</button>
+            <button class="seq-btn" onclick="switchSequence('day3', this)">Day 3 Follow-up</button>
+            <button class="seq-btn" onclick="switchSequence('day7', this)">Day 7 Offer</button>
+        </div>
+        <textarea id="pitchText" readonly></textarea>
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button onclick="copyPitch()" style="background:#10b981;">Copy Message</button>
+            <button onclick="closeModal()" style="background:#64748b;">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let allLeads = [];
+    let currentLead = null;
+    let currentDemo = "https://myportfolio.com";
+
+    async function fetchLeads() {
+        const skill = document.getElementById('skillInput').value || 'Web Development';
+        const country = document.getElementById('countryInput').value || 'Pakistan';
+        const niche = document.getElementById('nicheInput').value;
+        const grid = document.getElementById('leadsGrid');
+
+        grid.innerHTML = '<p style="text-align:center; color:#94a3b8;">Scanning Google Maps, extracting emails, and running mini-audits...</p>';
+
+        try {
+            const res = await fetch(`/api/leads?skill=${encodeURIComponent(skill)}&country=${encodeURIComponent(country)}&niche=${encodeURIComponent(niche)}`);
+            const data = await res.json();
+            
+            allLeads = data.leads || [];
+            currentDemo = data.demo_portfolio;
+
+            document.getElementById('demoBar').style.display = 'flex';
+            document.getElementById('demoLink').href = currentDemo;
+            document.getElementById('tabsContainer').style.display = 'flex';
+
+            renderCards(allLeads);
+        } catch (err) {
+            grid.innerHTML = '<p style="color:#ef4444; text-align:center;">Error fetching leads.</p>';
+        }
+    }
+
+    function renderCards(leads) {
+        const grid = document.getElementById('leadsGrid');
+        if (!leads.length) {
+            grid.innerHTML = '<p style="text-align:center; color:#94a3b8;">No clients found in this filter.</p>';
+            return;
+        }
+
+        grid.innerHTML = leads.map((item, idx) => `
+            <div class="card ${item.is_hot ? 'hot-lead' : ''}">
+                <span class="badge ${item.is_hot ? 'badge-hot' : 'badge-maps'}">${item.badge}</span>
+                <div class="title">${item.title}</div>
+                <div class="desc">${item.description}</div>
+                
+                <div class="contacts-box">
+                    <div class="contact-item">✉️ Email: <b>${item.email}</b></div>
+                    ${item.phones && item.phones.length ? `<div class="contact-item">📞 Phone/WhatsApp: <b>${item.phones.join(', ')}</b></div>` : ''}
+                    ${item.audit_notes && item.audit_notes.length ? item.audit_notes.map(n => `<span class="audit-tag">${n}</span>`).join('') : ''}
+                </div>
+
+                <div class="actions">
+                    <a class="btn-action btn-maps" href="${item.action_link}" target="_blank">Google Maps Listing ↗</a>
+                    <button class="btn-action btn-pitch" onclick="openPitchModal(${idx})">⚡ AI Pitch & Follow-up</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function filterLeads(category, btn) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (category === 'all') renderCards(allLeads);
+        if (category === 'hot') renderCards(allLeads.filter(l => l.is_hot));
+        if (category === 'maps') renderCards(allLeads.filter(l => l.lead_type === 'maps'));
+    }
+
+    async function openPitchModal(idx) {
+        currentLead = allLeads[idx];
+        document.getElementById('pitchModal').style.display = 'flex';
+        await switchSequence('day1');
+    }
+
+    async function switchSequence(step, btn) {
+        if (btn) {
+            document.querySelectorAll('.seq-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+        
+        const txt = document.getElementById('pitchText');
+        txt.value = "Generating step pitch...";
+
+        const res = await fetch('/api/ai_pitch', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                lead_title: currentLead.title,
+                lead_desc: currentLead.description,
+                audit_notes: currentLead.audit_notes || [],
+                step: step,
+                portfolio: currentDemo
+            })
+        });
+
+        const data = await res.json();
+        txt.value = data.pitch;
+    }
+
+    function copyPitch() {
+        const txt = document.getElementById('pitchText');
+        txt.select();
+        document.execCommand('copy');
+        alert('Pitch copied to clipboard!');
+    }
+
+    function closeModal() {
+        document.getElementById('pitchModal').style.display = 'none';
+    }
+</script>
+
+</body>
+                                            </html>
